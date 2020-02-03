@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.signup {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  
+}
