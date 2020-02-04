@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  background: #F5E6CC;
+  background: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,6 +20,8 @@
 .signup {
   display: flex;
   margin: 0 auto;
+  padding: 20px;
+  background-color: #F5E6CC;
   justify-content: center;
   flex-direction: column;
   width: 300px;
@@ -31,14 +33,25 @@
        -3px 3px #FFB48F,
        -4px 4px #FFB48F,
        -5px 5px #FFB48F;
+  font-size: 1rem;
+}
+
+input {
+  border: none;
+  width: 80%;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+label {
+  padding: 10px;
 }
 
 .settings-form {
   display: flex;
   flex-direction: column;
-  color: #A64AC9;
   padding: 50px;
-
+  
   
 }
 

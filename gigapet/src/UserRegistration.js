@@ -1,25 +1,42 @@
 import React from 'react';
 import './App.css';
 import Button from './Button';
+import { useState, useEffect } from 'react';
+import Axios from 'axios';
+
+useEffect(() => {
+    Axios
+        .get('https://gigapet-bw-7.herokuapp.com/api/auth/register')
+        .post(response => {
+            console.log(response.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+},[]);
 
 export default function UserRegistration() {
 
-
-
+    const [user, setUser] = useState([])
+    
     return (
         <form className='signup'>
-            <label>Email:</label>
-            <input type='email' minLength='1' name='email'/>
-            
-            <label>Household Name:</label>
+            <label>Email Adress:
+            <input type='email' minLength='1' name='email' onChange={() => setUser()}/>
+            </label>
+
+            <label>Household Name:
             <input type='text' minLength='1' name='householdName' />
-            
-            <label>Choose a Password:</label>
+            </label>
+
+            <label>Choose a Password:
             <input type='password' minLength='6' name='password'/>
-            
-            <label>Confirm Password:</label>
+            </label>
+
+            <label>Confirm Password:
             <input type='password' name='passwordConfirmed'/>
-            
+            </label>
+
             <Button />
         </form>
     )
