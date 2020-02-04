@@ -1,13 +1,14 @@
 import React from 'react';
 import { Form, Formik, Field } from 'formik';
 import Button from './Button';
+import './App.css';
 
 export default function UserSettingsForm() {
     return (
       <Formik>
             <Form className='settings-form'>
 
-                <Field component='select' name='child'>
+                <Field className='select' component='select' name='child'>
                   <option>Choose a child</option>
                   <option>Child 1</option>
                   <option>Child 2</option>
