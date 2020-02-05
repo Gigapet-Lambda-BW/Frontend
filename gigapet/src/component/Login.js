@@ -1,54 +1,73 @@
-// import React, { useState } from "react"
-// import { LoginUser } from "../something/api"
+import React, { useState } from "react"
+import api from "../api"
 
-// export default function Login(props) {
-//   const [credentials, setCredentials] = useState({
-//     username: "",
-//     password: ""
-//   })
-//   const [error, setError] = useState()
+function Signin(props) {
+    const [error, setError] = useState()
+    const [data, setData] = useState({
+        password: '',
+        username: ''
+    })
 
-//   const handleChange = (e) => {
-//       setCredentials({...credentials, [e.target.name]: e.target.value})
-//   }
+    const handleChange = (event) => {
+        setData({
+            ...data,
+            [event.target.name]: event.target.value,
+        })
+    }
 
-//   const handleSubmit = async e => {
-//     e.preventDefault()
-//     try {
-//       await LoginUser(credentials)
-//       props.history.push("/")
-//     } catch (error) {
-//       const status = error.response && error.response.status
-//       switch (status) {
-//         case 401:
-//           setError("Incorrect email and/or password!")
-//           break
-//         default:
-//           setError(error.response)
-//       }
-//     }
-//   }
+    const handleSubmit = (event) => {
+        event.preventDefault()
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//         {error && <div>{error}</div>}<br/>
-//       <input
-//         type="text"
-//         name="username"
-//         placeholder="Username"
-//         value={credentials.username}
-//         onChange={handleChange}
-//         required
-//       /><br/>
-//       <input
-//         type="password"
-//         name="password"
-//         placeholder="Password"
-//         value={credentials.password}
-//         onChange={handleChange}
-//         required
-//       /><br/>
-//       <button>Login</button>
-//     </form>
-//   )
-// }
+        api()
+            .post("users/login", data) //double check route
+            .then(result => {
+                // Store new token in local storage
+                localStorage.setItem("token", result.data.token)
+                // Redirect the user to their account page after logging in
+                props.history.push("/meals")
+            })
+            .catch(err => {
+                throw (err)
+            })
+
+    }
+
+    return (
+        <div className='form'>
+            {props.login === true ?
+             <div className='signupSection'>
+                <form onSubmit={handleSubmit} className='signupForm'>
+                    {error && <div className="error">{error}</div>}
+                    <h2>Login</h2>
+                    <ul className="noBullet">
+                        <li>
+                            <label htmlFor="username"></label>
+                            <input type="username" name="username" placeholder="Username" value={data.username} onChange={handleChange} className='inputFields' />
+                        </li>
+                        <li>
+                            <label htmlFor="password"></label>
+                            <input type="password" name="password" placeholder="Password" value={data.password} onChange={handleChange} className='inputFields' />
+
+                        </li>
+                        <li id='center-btn'>
+                            <button type="submit" id='join-btn'>Sign In</button>
+
+                        </li>
+                    </ul>
+                </form>
+            </div> : 
+                <form onSubmit={handleSubmit} style={props.reveal}>
+                    {error && <div className="error">{error}</div>}
+
+                    <input type="username" name="username" placeholder="Username" value={data.username} onChange={handleChange} />
+                    <input type="password" name="password" placeholder="Password" value={data.password} onChange={handleChange} />
+
+                    <button type="submit">Sign In</button>
+                </form>}
+
+        </div>
+
+    )
+}
+
+export default Signin
