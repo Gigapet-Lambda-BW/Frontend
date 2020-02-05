@@ -1,15 +1,17 @@
 import React from 'react';
 import './App.css';
-import UserSettingsForm from './UserSettingsForm';
-// import Login from './component/Login'
+import FoodLog from './component/FoodLog';
+import UserSettingsForm from './component/UserSettingsForm';
+import UserRegistration from './component/UserRegistration';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <h1>Gigapet</h1> 
+        <FoodLog />
         <UserSettingsForm />
-        {/* <Login /> */}
+        <UserRegistration />
       </header>
     </div>
   );
