@@ -3,7 +3,7 @@ import api from '../api'
 import styled from "styled-components"
 import WebFont from 'webfontloader';
 import { connect } from "react-redux";
-import { fetchDescription } from '../../actions/description'
+import { fetchDescription } from '../actions/description'
 import { FaCheck } from 'react-icons/fa';
 
 
@@ -68,7 +68,7 @@ function Description(props) {
     } else {
         return (
             <div>
-                <h2>Loading restaurant data</h2>
+                <h2>Loading meal data</h2>
             </div>
         )
     }
