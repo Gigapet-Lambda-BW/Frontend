@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Formik, Field } from 'formik';
-import Button from '../Button';
-import './App.css';
+import Button from './Button';
 
 export default function UserSettingsForm() {
     return (
@@ -16,17 +15,9 @@ export default function UserSettingsForm() {
 
                 <h3>Allergies</h3>
                 <label>Check all that apply:</label>
-
-                <label>Nuts
-                    <Field type='checkbox'></Field>
-                </label>
-                <label>Eggs
-                    <Field type='checkbox'></Field>
-                </label>
-                <label>Dairy
-                    <Field type='checkbox'></Field>
-                </label>
-
+                <label>Nuts: <input id='nutAllergy' type='checkbox' /></label>
+                <label>Eggs: <input id='eggAllergy' type='checkbox' /></label>
+                <label>Dairy: <input id='dairyAllergy' type='checkbox' /></label>
                 <Button />
             </Form>
       </Formik>

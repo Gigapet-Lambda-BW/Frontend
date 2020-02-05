@@ -8,19 +8,17 @@ export default function FoodLog() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        addDailyFood(event.target.value)
+        addDailyFood(event.target.dailyFoodInput.value)
 
     }
-
-    console.log(dailyFood)
 
     return (
     <Formik>
         <Form onSubmit={event => handleSubmit(event)}>
-            <input type='text' placeholder='What did you eat today?' name='dailyFoodInput' ></input>
+            <input type='text' placeholder='What did you eat today?' id='dailyFoodInput' ></input>
             <button>Save</button>
             
-
+            <ul>{dailyFood[0]}</ul>
 
         </Form> 
     </Formik>    

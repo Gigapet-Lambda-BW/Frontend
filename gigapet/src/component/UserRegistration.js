@@ -1,43 +1,79 @@
 import React from 'react';
-import './App.css';
-import Button from '../Button';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import Button from './Button';
+import { useState } from 'react';
+import { Formik, Form, Field } from 'formik';
 
-useEffect(() => {
-    axios
-        .get('https://gigapet-bw-7.herokuapp.com/api/auth/register')
-        .then(response => {
-            console.log(response.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-},[]);
+const validate = ({email, householdName, password, passwordConfirmed}) => {
+    const errors = {};
+
+    //validating email
+    if (!email) {
+        errors.email = "Please enter your email"
+    } else if (email.length < 2) {
+        errors.email = 'The email you entered is invalid'
+    }
+    //validating household name
+    if (!householdName) {
+        errors.householdName = "Please enter a name for your household"
+    } else if (householdName.length < 2) {
+        errors.householdName = 'The household name you entered is invalid'
+    }
+    //validating password
+    if (!password) {
+        errors.password = "Please enter a password"
+    } else if (password.length < 2) {
+        errors.password = "The password you entered is invalid"
+    }
+    //validating confirmed password
+    if (!passwordConfirmed) {
+        errors.passwordConfirmed = "Please confirm your password"
+    } else if (passwordConfirmed !== password) {
+        errors.passwordConfirmed = "Passwords do not match"
+    }
+
+    return errors;
+}
 
 export default function UserRegistration() {
 
-    const [user, setUser] = useState([])
-    
+    const [user, setUser] = useState({
+        email: '',
+        householdName: '',
+        password: '',
+        passwordConfirmed: '',
+    });
+
+    const handleChange = (event) => {
+        setUser(event.target.value)
+    }
+
     return (
-        <form className='signup'>
-            <label>Email Adress:
-            <input type='email' minLength='1' name='email' onChange={() => setUser()}/>
-            </label>
+        <Formik 
+            validate={validate} 
+            initialValues={{
+                email: "",
+                householdName: "",
+                password: "",
+                passwordConfirmed: "",
+            }} 
+            render={() => {
+                return (
+                    <Form className='signup'>
 
-            <label>Household Name:
-            <input type='text' minLength='1' name='householdName' />
-            </label>
+                            <Field className='field' type='email' placeholder='Email' name='email' onChange={handleChange}/>
 
-            <label>Choose a Password:
-            <input type='password' minLength='6' name='password'/>
-            </label>
+                            <Field className='field' type='text' placeholder='Household Name' name='householdName' onChange={handleChange} />
 
-            <label>Confirm Password:
-            <input type='password' name='passwordConfirmed'/>
-            </label>
+                            <Field className='field' type='password' placeholder='Password' name='password' onChange={handleChange}/>
 
-            <Button />
-        </form>
+                            <Field className='field' type='password' placeholder='Confirm password' name='passwordConfirmed' onChange={handleChange}/>
+
+
+                    <Button />
+                </Form>
+            )
+        }}
+        
+        />
     )
 }

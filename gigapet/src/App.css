@@ -36,11 +36,13 @@
   font-size: 1rem;
 }
 
-input {
+.field {
   border: none;
+  border-bottom: 1px solid #FFB48F;
+  background: none;
   width: 80%;
-  margin: 0 auto;
-  padding: 5px;
+  margin: 10px auto;
+  padding: 7px;
 }
 
 label {
