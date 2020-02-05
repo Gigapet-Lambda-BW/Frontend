@@ -7,6 +7,8 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import App from './App';
+import { reducerList } from "./reducers/meals";
+import { reducerDescription } from "./reducers/description";
 
 
 const rootReducer = combineReducers({

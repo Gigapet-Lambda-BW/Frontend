@@ -72,8 +72,6 @@ function Description(props) {
             </div>
         )
     }
-
-
 }
 
 function mapStateToProps(state) {

@@ -19,7 +19,7 @@ function Signin(props) {
         event.preventDefault()
 
         api()
-            .post("users/login", data) //double check route
+            .post("auth/login", data) //double check route
             .then(result => {
                 // Store new token in local storage
                 localStorage.setItem("token", result.data.token)
