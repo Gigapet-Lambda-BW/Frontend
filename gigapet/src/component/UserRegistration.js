@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Button from './Button';
+import Button from '../Button';
 import { useState, useEffect } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
 useEffect(() => {
-    Axios
+    axios
         .get('https://gigapet-bw-7.herokuapp.com/api/auth/register')
-        .post(response => {
+        .then(response => {
             console.log(response.data)
         })
         .catch(err => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Formik, Field } from 'formik';
-import Button from './Button';
+import Button from '../Button';
 import './App.css';
 
 export default function UserSettingsForm() {
