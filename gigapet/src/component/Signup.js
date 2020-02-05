@@ -20,7 +20,7 @@ function Signup(props) {
         event.preventDefault()
 
         api()
-            .post('users/register', data)
+            .post('auth/register', data)
             .then(result => {
                 setData({
                     email: '',
@@ -37,7 +37,8 @@ function Signup(props) {
 
     return (
         <div className='center'>
-            {props.signup === true ? <div className='signupSection'>
+            {props.signup === true ? 
+            <div className='signupSection'>
                 <form onSubmit={handleSubmit} className='signupForm'>
                     {error && <div className='error'>{error}</div>}
                     <h2>Sign Up</h2>
@@ -58,10 +59,10 @@ function Signup(props) {
                             <button id='join-btn' type='submit'>Submit</button>
                         </li>
                     </ul>
-
-
                 </form>
-            </div> : <form onSubmit={handleSubmit} style={props.reveal}>
+            </div> 
+            : 
+            <form onSubmit={handleSubmit} style={props.reveal}>
                     {error && <div className='error'>{error}</div>}
 
                     <input type="email" name='email' placeholder='Enter your email' value={data.email} onChange={handleChange} />
