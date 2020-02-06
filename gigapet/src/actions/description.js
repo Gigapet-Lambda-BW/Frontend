@@ -1,4 +1,4 @@
-import api from "../axiosAuth";
+import { axiosWithAuth } from "../axiosAuth";
 
 export const FETCH_DISH_START = "FETCH_DISH_START";
 export const FETCH_DISH_SUCCESS = "FETCH_DISH_SUCCESS";
@@ -7,7 +7,7 @@ export const FETCH_DISH_ERROR = "FETCH_DISH_ERROR";
 export function fetchDescription(id) {
   return dispatch => {
     dispatch({ type: FETCH_DISH_START });
-    api()
+    axiosWithAuth()
       .get(`/foodgroups/item/${id}`) //replace with correct route 
       .then(res => {
         dispatch({ type: FETCH_DISH_SUCCESS, payload: res.data });

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import api from '../axiosAuth'
+import { axiosWithAuth } from '../axiosAuth'
 
 function Signup(props) {
     const [error, setError] = useState();
@@ -19,7 +19,7 @@ function Signup(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        api()
+        axiosWithAuth()
             .post('auth/register', data)
             .then(result => {
                 setData({

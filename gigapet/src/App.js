@@ -5,10 +5,11 @@ import './App.css';
 import FoodLog from './component/FoodLog';
 import UserSettingsForm from './component/UserSettingsForm';
 import UserRegistration from './component/UserRegistration';
-import { getToken } from './axiosAuth'
+import { axiosWithAuth } from './axiosAuth'
+import Login from './component/Login'
 
 function App(props) {
-  const signedIn = getToken()
+  const signedIn = axiosWithAuth()
   const [savedDish, setSavedDish] = useState([
     {
       name:''
@@ -18,7 +19,8 @@ function App(props) {
     <div className="App">
       <header className="App-header">
         <h1>Gigapet</h1> 
-        <UserRegistration />        
+        <UserRegistration />
+        <Route exact path='/login' component={Login} />      
         <FoodLog signedIn={signedIn} />
         <Route exact path='/' component={UserSettingsForm} />
 

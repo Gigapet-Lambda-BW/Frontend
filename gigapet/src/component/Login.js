@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { getToken } from "../axiosAuth"
+import axios from 'axios'
 
 export default function Login(props) {
     const [error, setError] = useState()
@@ -10,23 +11,25 @@ export default function Login(props) {
 
   const handleChange = (e) => {
       setCredentials({...credentials, [e.target.name]: e.target.value})
+      console.log(credentials)
   }
 
   const handleSubmit = async e => {
     e.preventDefault()
-    try {
-      await getToken(credentials)
-      props.history.push("/")
-    } catch (error) {
-      const status = error.response && error.response.status
-      switch (status) {
-        case 401:
-          setError("Incorrect email and/or password!")
-          break
-        default:
-          setError(error.response)
-      }
-    }
+    axios
+        .post('https://gigapet-bw-7.herokuapp.com/api/auth/login', credentials)
+        .then(result => {
+            // setData({
+            //     password: '',
+            //     username: ''
+            // })
+            console.log(result)
+            // props.setSignup(!props.signup)
+            // props.setLogin(!props.login)
+        })
+        .catch(err => {
+            throw (err)
+        })
   }
 
   return (

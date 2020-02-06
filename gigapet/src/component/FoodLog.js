@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
+import { axiosWithAuth } from "../axiosAuth"
 
 export default function FoodLog() {
 

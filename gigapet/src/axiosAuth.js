@@ -1,14 +1,12 @@
-import axios from 'axios'
+import axios from "axios";
 
-export function getToken() {
-  return localStorage.getItem("token");
-}
-
-export default function() {
+export const axiosWithAuth = () => {
+  const token = localStorage.getItem("token");
   return axios.create({
     baseURL: "https://gigapet-bw-7.herokuapp.com/api/",
     headers: {
-      Authorization: getToken()
+      Authorization: token
     }
   });
-}
+};
+
