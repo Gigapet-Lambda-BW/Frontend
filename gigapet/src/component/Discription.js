@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import api from '../api'
+import api from '../axiosAuth'
 import styled from "styled-components"
 import WebFont from 'webfontloader';
 import { connect } from "react-redux";

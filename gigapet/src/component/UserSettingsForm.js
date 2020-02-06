@@ -7,7 +7,7 @@ export default function UserSettingsForm() {
       <Formik>
             <Form className='settings-form'>
 
-                <Field component='select' name='child'>
+                <Field className='select' component='select' name='child'>
                   <option>Choose a child</option>
                   <option>Child 1</option>
                   <option>Child 2</option>
@@ -15,17 +15,9 @@ export default function UserSettingsForm() {
 
                 <h3>Allergies</h3>
                 <label>Check all that apply:</label>
-
-                <label>Nuts
-                    <Field type='checkbox'></Field>
-                </label>
-                <label>Eggs
-                    <Field type='checkbox'></Field>
-                </label>
-                <label>Dairy
-                    <Field type='checkbox'></Field>
-                </label>
-
+                <label>Nuts: <input id='nutAllergy' type='checkbox' /></label>
+                <label>Eggs: <input id='eggAllergy' type='checkbox' /></label>
+                <label>Dairy: <input id='dairyAllergy' type='checkbox' /></label>
                 <Button />
             </Form>
       </Formik>

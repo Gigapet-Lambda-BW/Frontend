@@ -1,4 +1,4 @@
-import api from "../api";
+import api from "../axiosAuth";
 
 export const FETCH_DISH_START = "FETCH_DISH_START";
 export const FETCH_DISH_SUCCESS = "FETCH_DISH_SUCCESS";

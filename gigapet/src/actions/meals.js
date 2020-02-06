@@ -1,5 +1,5 @@
 import axios from "axios";
-import api from "../api";
+import api from "../axiosAuth";
 
 export const FETCH_LIST_START = "FETCH_LIST_START";
 export const FETCH_LIST_SUCCESS = "FETCH_LIST_SUCCESS";

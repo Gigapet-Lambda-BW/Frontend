@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default function Button() {
     
-    const myButton = styled.button`
+    const MyButton = styled.button`
         background-color: #A64AC9;
         color: #F5E6CC;
         margin: 10px auto;
@@ -15,6 +15,6 @@ export default function Button() {
         font-family: 'Martel Sans', sans-serif;
     `
     return(
-        <myButton type='submit'>Submit</myButton>
+        <MyButton type='submit'>Submit</MyButton>
     )
 }
