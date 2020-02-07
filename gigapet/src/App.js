@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, Route } from "react-router-dom";
-import Welcome from './component/Welcome'
 import './App.css';
 import FoodLog from './component/FoodLog';
 import UserSettingsForm from './component/UserSettingsForm';
