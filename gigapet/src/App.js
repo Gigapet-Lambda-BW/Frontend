@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import UserSettingsForm from './component/UserSettingsForm';
-import UserRegistration from './component/UserRegistration';
 import { ArchivedFoodLog } from './component/ArchivedFoodLog';
 import Navigation from './component/Navigation';
 import Homepage from './component/Homepage';
