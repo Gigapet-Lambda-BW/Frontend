@@ -3,6 +3,7 @@ import Button from './Button';
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 
+
 const validate = ({email, householdName, password, passwordConfirmed}) => {
     const errors = {};
 
@@ -36,6 +37,7 @@ const validate = ({email, householdName, password, passwordConfirmed}) => {
 
 export default function UserRegistration() {
 
+
     const [user, setUser] = useState({
         email: '',
         householdName: '',
@@ -58,8 +60,9 @@ export default function UserRegistration() {
             }} 
             render={() => {
                 return (
-                    <Form className='signup'>
-
+                    <Form className='form'>
+                            <h2>Register</h2>
+                            
                             <Field className='field' type='email' placeholder='Email' name='email' onChange={handleChange}/>
 
                             <Field className='field' type='text' placeholder='Household Name' name='householdName' onChange={handleChange} />
