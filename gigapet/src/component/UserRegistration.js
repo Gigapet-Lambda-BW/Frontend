@@ -5,6 +5,7 @@ import { Formik, Form, Field } from 'formik';
 // import { getToken } from "../axiosAuth"
 import axios from 'axios'
 
+
 const validate = ({email, householdName, password, passwordConfirmed}) => {
     const errors = {};
 
@@ -37,7 +38,8 @@ const validate = ({email, householdName, password, passwordConfirmed}) => {
 }
 
 export default function UserRegistration() {
-    const [data, setData] = useState()
+
+
     const [user, setUser] = useState({
         username: '',
         // householdName: '',

@@ -33,7 +33,7 @@ export default function Login(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='form' onSubmit={handleSubmit}>
         {error && <div>{error}</div>}<br/>
       <input
         type="text"
