@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import UserRegistration from './UserRegistration';
-//import Login from './Login';
+import Login from './Login';
 import GigapetLogo from '../img/GigapetLogo.png';
 
 export default function Navigation () {
@@ -13,8 +13,8 @@ export default function Navigation () {
                 <Link className='link' to='/UserRegistration'>Sign Up</Link>
                 <Link className='link' to='/Login'>Login</Link>
 
-                <Route path='/UserRegistration' component={UserRegistration} />
-                {/* <Route path='/Login' component={Login} /> */}
+                <Route exact path='/UserRegistration' component={UserRegistration} />
+                <Route exact path='/Login' component={Login} />
             </div>
         </Router>
     )
