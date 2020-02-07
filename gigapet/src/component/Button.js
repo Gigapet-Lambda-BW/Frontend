@@ -12,7 +12,7 @@ export default function Button(props) {
         border: none;
         width: 120px;
         height: 40px;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         font-family: 'Martel Sans', sans-serif;
         border: 5px solid #A64AC9;
         border: 1px solid #FFB48F;
