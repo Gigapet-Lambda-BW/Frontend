@@ -7,23 +7,15 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import App from './App';
-import { reducerList } from "./reducers/meals";
-import { reducerDescription } from "./reducers/description";
 
-
-const rootReducer = combineReducers({
-  meals: reducerList,
-  description: reducerDescription
-});
-
-const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
-  <Provider store={store}>
+  // <Provider >
     <Router>
       <App />
     </Router>
-  </Provider>,
+  // </Provider>
+  ,
     document.getElementById("root")
    );
 

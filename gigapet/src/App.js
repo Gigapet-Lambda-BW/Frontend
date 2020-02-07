@@ -21,7 +21,7 @@ function App(props) {
         <h1>Gigapet</h1> 
         <UserRegistration />
         <Route exact path='/login' component={Login} />      
-        <FoodLog signedIn={signedIn} />
+        <FoodLog />
         <Route exact path='/' component={UserSettingsForm} />
 
       </header>
