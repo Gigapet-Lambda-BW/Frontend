@@ -18,18 +18,13 @@ export default function Login(props) {
     e.preventDefault()
     axios
         .post('https://gigapet-bw-7.herokuapp.com/api/auth/login', credentials)
-        .then(result => {
-            // setData({
-            //     password: '',
-            //     username: ''
-            // })
-            console.log(result)
-            // props.setSignup(!props.signup)
-            // props.setLogin(!props.login)
-        })
-        .catch(err => {
-            throw (err)
-        })
+      .then(res => {
+        localStorage.setItem('token', res.data.payload)
+        props.history.push('/food-log')
+      })
+      .catch(err => {
+        setError(err.response.data.message)
+      })
   }
 
   return (

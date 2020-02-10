@@ -8,9 +8,9 @@ import {
 } from "../actions/foodActions";
 
 export const initialState = {
-  foodItems: [
-    { name: "broccoli", healthStatus: true },
-    { name: "sour patch kids", healthStatus: false }
+  foodItemsArray: [
+    { name: "broccoli" },
+    { name: "sour patch kids" }
   ]
 };
 
@@ -25,7 +25,7 @@ export const dietReducer = (state = initialState, action) => {
     case FETCH_FOODITEM_SUCCESS:
       return {
         ...state,
-        smurfArray: action.payload,
+        foodItemsArray: action.payload,
         isLoading: false
       };
     case FETCH_FOODITEM_ERROR:
@@ -43,12 +43,12 @@ export const dietReducer = (state = initialState, action) => {
     case ADD_FOODITEM:
       return {
         ...state,
-        foodItems: [...state.foodItems, action.payload]
+        foodItemsArray: [...state.foodItemsArray, action.payload]
       };
     case DELETE_FOODITEM: //start, success, error
       return {
         ...state,
-        foodItems: action.payload,
+        foodItemsArray: action.payload,
         isLoading: false
       };
     default:

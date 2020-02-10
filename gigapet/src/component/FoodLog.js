@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import { fetchFoodItem, addFoodItem, updateFoodItem } from '../actions/foodActions'
+import { fetchFoodItem, addFoodItem, deleteFoodItem } from '../actions/foodActions'
 import { connect } from 'react-redux'
 
 const FoodLog = props => {
     const [ name, setName ] = useState('');
 
-    const handleNameChanges = e => {
+    const handleChange = e => {
         setName(e.target.value);
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
         props.addFoodItem(name)
         setName('')
     }
@@ -19,7 +19,7 @@ const FoodLog = props => {
     return (
     <Formik>
         <Form onSubmit={handleSubmit}>
-            <input type='text' name='name' value={name} placeholder='What did you eat today?' onChange={handleNameChanges} ></input>
+            <input type='text' name='name' value={name} placeholder='What did you eat today?' onChange={handleChange} ></input>
             <button>Submit</button>
         </Form> 
     </Formik>    
@@ -28,7 +28,8 @@ const FoodLog = props => {
 
 const mapDispatchToProps = {
     addFoodItem,
-    fetchFoodItem
+    fetchFoodItem,
+    deleteFoodItem
 }
 
 export default connect(null, mapDispatchToProps)(FoodLog)
