@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import { useState } from 'react';
-import { axiosWithAuth } from "../axiosAuth"
+import { fetchFoodItem, addFoodItem, updateFoodItem } from '../actions/foodActions'
+import { connect } from 'react-redux'
 
-export default function FoodLog() {
+const FoodLog = props => {
+    const [ name, setName ] = useState('');
 
-    const [ dailyFood, addDailyFood ] = useState([]);
+    const handleNameChanges = e => {
+        setName(e.target.value);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        addDailyFood(event.target.dailyFoodInput.value)
-
+        props.addFoodItem(name)
+        setName('')
     }
 
     return (
     <Formik>
-        <Form onSubmit={event => handleSubmit(event)}>
-            <input type='text' placeholder='What did you eat today?' id='dailyFoodInput' ></input>
-            <button>Save</button>
-            
-            <ul>{dailyFood}</ul>
-
+        <Form onSubmit={handleSubmit}>
+            <input type='text' name='name' value={name} placeholder='What did you eat today?' onChange={handleNameChanges} ></input>
+            <button>Submit</button>
         </Form> 
     </Formik>    
     )
 }
+
+const mapDispatchToProps = {
+    addFoodItem,
+    fetchFoodItem
+}
+
+export default connect(null, mapDispatchToProps)(FoodLog)

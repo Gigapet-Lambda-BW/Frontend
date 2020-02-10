@@ -8,7 +8,7 @@ export const ADD_FOODITEM = "ADD_FOODITEM";
 export const UPDATE_FOODITEM = "UPDATE_FOODITEM";
 export const DELETE_FOODITEM = "DELETE_FOODITEM";
 
-export function fetchFoodItem() {
+export const fetchFoodItem = () => {
   return dispatch => {
     dispatch({ type: FETCH_FOODITEM_START })
     axios
@@ -22,11 +22,12 @@ export function fetchFoodItem() {
   }
 }
 
-export function createFoodItem(name) {
+export const addFoodItem = (name, category) => {
   return dispatch => {
     axios
       .post("https://gigapet-bw-7.herokuapp.com/api/", {
-        name: name
+        name: name,
+        category: category
       })
       .then(res => {
         dispatch({
@@ -40,7 +41,23 @@ export function createFoodItem(name) {
   }
 }
 
-export function deleteFoodItem(id) {
+export const updateFoodItem = (id, updatedFoodItem) => {
+  return dispatch => {
+    axios
+      .put(`https://gigapet-bw-7.herokuapp.com/api/${id}`, updatedFoodItem)
+      .then(res => {
+        dispatch({
+          type: UPDATE_FOODITEM,
+          payload: res.data
+        })
+        .catch(err => {
+          throw err
+        })
+      }) 
+  }
+}
+
+export const deleteFoodItem = id => {
   return dispatch => {
     axios
       .delete(`https://gigapet-bw-7.herokuapp.com/api/${id}`)

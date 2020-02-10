@@ -94,32 +94,5 @@ export default function UserRegistration() {
                 <button>Submit</button>
             </form>
         </div>
-        // <Formik 
-        //     validate={validate} 
-        //     initialValues={{
-        //         username: "",
-        //         // householdName: "",
-        //         password: "",
-        //         // passwordConfirmed: "",
-        //     }} 
-        //     render={() => {
-        //         return (
-        //             <div className='signup'>
-
-        //                     <input className='field' type='text' placeholder='Username' name='username' onChange={handleChange} value={user.username}/>
-
-        //                     {/* <input className='field' type='text' placeholder='Household Name' name='householdName' onChange={handleChange} /> */}
-
-        //                     <input className='field' type='password' placeholder='Password' name='password' onChange={handleChange} value={user.password}/>
-
-        //                     {/* <input className='field' type='password' placeholder='Confirm password' name='passwordConfirmed' onChange={handleChange}/> */}
-
-
-        //             <Button onClick={handleSubmit}/>
-        //         </div>
-        //     )
-        // }}
-        
-        // />
     )
 }

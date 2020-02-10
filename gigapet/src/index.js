@@ -8,13 +8,20 @@ import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import App from './App';
 
+function reducer() {
+  return {
+    title: 'Hello'
+  }
+}
+
+const store = createStore(reducer)
 
 ReactDOM.render(
-  // <Provider >
+  <Provider store={store}>
     <Router>
       <App />
     </Router>
-  // </Provider>
+  </Provider>
   ,
     document.getElementById("root")
    );
