@@ -17,12 +17,12 @@ const FoodLog = props => {
     }
 
     return (
-    <Formik>
-        <Form onSubmit={handleSubmit}>
+    <div>
+        <form onSubmit={handleSubmit}>
             <input type='text' name='name' value={name} placeholder='What did you eat today?' onChange={handleChange} ></input>
             <button>Submit</button>
-        </Form> 
-    </Formik>    
+        </form> 
+    </div>    
     )
 }
 

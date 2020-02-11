@@ -9,9 +9,11 @@ import {
 
 export const initialState = {
   foodItemsArray: [
-    { name: "broccoli" },
-    { name: "sour patch kids" }
-  ]
+    { name: "broccoli", id: null },
+    { name: "sour patch kids", id: null }
+  ],
+  isLoading: false,
+  error: null
 };
 
 export const dietReducer = (state = initialState, action) => {
