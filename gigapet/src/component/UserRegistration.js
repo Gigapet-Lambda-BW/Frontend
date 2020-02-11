@@ -2,6 +2,8 @@ import React from 'react';
 import Button from './Button';
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
+// import { getToken } from "../axiosAuth"
+import axios from 'axios'
 
 
 const validate = ({email, householdName, password, passwordConfirmed}) => {
@@ -39,44 +41,58 @@ export default function UserRegistration() {
 
 
     const [user, setUser] = useState({
-        email: '',
-        householdName: '',
+        username: '',
+        // householdName: '',
         password: '',
-        passwordConfirmed: '',
+        // passwordConfirmed: '',
     });
 
     const handleChange = (event) => {
-        setUser(event.target.value)
+        setUser({...user, [event.target.name]: event.target.value})
+        console.log(user)
+    }
+    
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        axios
+            .post('https://gigapet-bw-7.herokuapp.com/api/auth/register', user)
+            .then(result => {
+                // setData({
+                //     password: '',
+                //     username: ''
+                // })
+                console.log(result)
+                // props.setSignup(!props.signup)
+                // props.setLogin(!props.login)
+            })
+            .catch(err => {
+                throw (err)
+            })
     }
 
     return (
-        <Formik 
-            validate={validate} 
-            initialValues={{
-                email: "",
-                householdName: "",
-                password: "",
-                passwordConfirmed: "",
-            }} 
-            render={() => {
-                return (
-                    <Form className='form'>
-                            <h2>Register</h2>
-                            
-                            <Field className='field' type='email' placeholder='Email' name='email' onChange={handleChange}/>
-
-                            <Field className='field' type='text' placeholder='Household Name' name='householdName' onChange={handleChange} />
-
-                            <Field className='field' type='password' placeholder='Password' name='password' onChange={handleChange}/>
-
-                            <Field className='field' type='password' placeholder='Confirm password' name='passwordConfirmed' onChange={handleChange}/>
-
-
-                    <Button />
-                </Form>
-            )
-        }}
-        
-        />
+        <div className="signup" validate={validate}>
+            
+        {console.log(user)}
+            <form onSubmit={event => handleSubmit(event)}>
+                <label>
+                Username:
+                <input className='field'
+                    type="text"
+                    name="username"
+                    onChange={event => handleChange(event)}
+                />
+                </label>
+                <label>
+                Password:
+                <input className='field'
+                    type="text"
+                    name="password"
+                    onChange={event => handleChange(event)}
+                />
+                </label>
+                <button>Submit</button>
+            </form>
+        </div>
     )
 }

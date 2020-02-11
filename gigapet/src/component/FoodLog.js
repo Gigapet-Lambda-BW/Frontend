@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import { useState } from 'react';
-import Button from './Button';
+import { fetchFoodItem, addFoodItem, deleteFoodItem } from '../actions/foodActions'
+import { connect } from 'react-redux'
 
-export default function FoodLog(props) {
+const FoodLog = props => {
+    const [ name, setName ] = useState('');
+
+    const handleChange = e => {
+        setName(e.target.value);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.addFoodItem(name)
+        setName('')
+    }
 
     return (
-    <Formik>
-        <Form onSubmit={event => props.handleSubmit(event)} className='form'>
-            <p className='foodLog'>{props.date}</p>
-            <input className='field' type='text' placeholder='What did you eat today?' id='dailyFoodInput' ></input>
-            <Button />
-            <div>
-                {props.dailyFood.map(foodItem => <p>{foodItem}</p>)}
-            </div>
-        
-        </Form> 
-    </Formik>    
+    <div>
+        <form onSubmit={handleSubmit}>
+            <input type='text' name='name' value={name} placeholder='What did you eat today?' onChange={handleChange} ></input>
+            <button>Submit</button>
+        </form> 
+    </div>    
     )
 }
+
+const mapDispatchToProps = {
+    addFoodItem,
+    fetchFoodItem,
+    deleteFoodItem
+}
+
+export default connect(null, mapDispatchToProps)(FoodLog)
